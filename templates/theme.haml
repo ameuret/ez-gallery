@@ -1,0 +1,33 @@
+!!! 5
+!!!
+%html
+  %head
+
+    %title= "#{ds[:siteTitle]} | #{ds[:subtitle]}"
+
+    %meta{ 'http-equiv' => "Content-Type", :content => "text/html; charset=utf-8" }/
+
+    %link{ :rel=>"stylesheet", :type=>"text/css", :href=>"css/mainb.css" }/
+    %link{ :href => "css/lightbox.css", :rel => "stylesheet", :type => "text/css", :media => "screen"}/
+    %link{ :href => "css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css", :media => "screen"}/
+  %link{ :href => "http://fonts.googleapis.com/css?family=Dosis", :rel=>"stylesheet", :type=>"text/css"}/
+  %script{ :type => "text/javascript", :src => "js/jquery-1.7.2.min.js" }
+  %script{ :type => "text/javascript", :src => "js/lightbox.js" }
+  %body.theme-body
+    #headlines
+      #name
+        %a{ :href=>"#" }= ds[:albumTitle]
+      %br/
+      %a{ :href=>"#" }= ds[:subtitle]
+    #slides
+      - ds[:pictures].each do |p|
+        .slide
+          %a{:href=>"albums/#{ds[:albumName]}/#{p[:picture]}", :rel=>"lightbox[#{ds[:albumName]}]", :title=>"#{p[:title]}"}
+            %img{ :src=>"albums/#{ds[:albumName]}/thumbs/thumb_#{p[:picture]}", :alt=>"#{p[:title]}"}/
+          %br/
+          %a{:href=>"albums/#{ds[:albumName]}/hd/#{p[:picture]}"}
+            %i.icon-cloud-download &nbsp;HD
+  
+        
+        
+
